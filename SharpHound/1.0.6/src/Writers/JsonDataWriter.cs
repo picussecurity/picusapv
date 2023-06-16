@@ -39,7 +39,32 @@ namespace Sharphound.Writers
         /// <exception cref="FileExistsException"></exception>
         protected override void CreateFile()
         {
-            var filename = _context.ResolveFileName(DataType, "json", true);
+            var tempDataType = "";
+            switch (DataType)
+            {
+                case "domains":
+                    tempDataType = "1";
+                    break;
+                case "ous":
+                    tempDataType = "2";
+                    break;
+                case "gpos":
+                    tempDataType = "3";
+                    break;
+                case "containers":
+                    tempDataType = "4";
+                    break;
+                case "users":
+                    tempDataType = "5";
+                    break;
+                case "groups":
+                    tempDataType = "6";
+                    break;
+                case "computers":
+                    tempDataType = "7";
+                    break;
+            }
+            var filename = _context.ResolveFileName(tempDataType, "json", false);
             if (File.Exists(filename))
                 throw new FileExistsException($"File {filename} already exists. This should never happen!");
 

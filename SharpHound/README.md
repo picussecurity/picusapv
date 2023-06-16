@@ -4,10 +4,18 @@ C# Data Collector for the BloodHound Project.
 ### General Information
 | Project Source | Our Version | DotNet Version |
 |:-:|:-:|:-:|
-| https://github.com/BloodHoundAD/SharpHound | 1.0.5 | 4.6.2 |
+| https://github.com/BloodHoundAD/SharpHound | 1.0.6 | 4.6.2 |
 
 ### Edit & Update Instructions
 For updates to the new version, the following changes must be made in the new version.
+* Randomize file names inside SharpHound Collection ZIP
+    * File Name: JsonDataWriter.cs
+    * Line: 40
+    * ```protected override void CreateFile() function change```
+* Randomize file names inside SharpHound Collection ZIP
+    * File Name: ResolveFileNamessss.cs
+    * Line: 100
+    * ```public string ResolveFileName(string filename, string extension, bool addTimestamp) function change```	
 * Remove BloodHound keyword from ZIP filename
     * File Name: OutputWriter.cs
     * Line: 145

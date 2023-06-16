@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -98,14 +99,23 @@ namespace Sharphound
 
         public string ResolveFileName(string filename, string extension, bool addTimestamp)
         {
-            var finalFilename = filename;
+            string finalFilename = filename;
             if (!filename.EndsWith(extension))
                 finalFilename = $"{filename}.{extension}";
 
-            if (extension is "json" or "zip" or "bin" && Flags.RandomizeFilenames)
-                finalFilename = $"{Path.GetRandomFileName()}";
+            if (extension is "json" or "zip" or "bin")
+            {
+                StringBuilder sb = new StringBuilder(Path.GetRandomFileName());
+                
+                sb[sb.Length - 1] = 's';
+                sb[sb.Length - 2] = 'c';
+                sb[sb.Length - 3] = 'p';
+                finalFilename = $"{filename}_{sb.ToString()}";
 
-            if (addTimestamp) finalFilename = $"{CurrentLoopTime}_{finalFilename}";
+            }
+
+
+            // if (addTimestamp) finalFilename = $"{CurrentLoopTime}_{finalFilename}";
 
             if (OutputPrefix != null) finalFilename = $"{OutputPrefix}_{finalFilename}";
 
