@@ -8,6 +8,10 @@ C# Data Collector for the BloodHound Project.
 
 ### Edit & Update Instructions
 For updates to the new version, the following changes must be made in the new version.
+* Merged LoggedOn and trackcomputer parameters
+    * File Name: Options.cs
+    * Line: 181
+    * ```TrackComputerCalls = true```
 * Randomize file names inside SharpHound Collection ZIP
     * File Name: JsonDataWriter.cs
     * Line: 40
