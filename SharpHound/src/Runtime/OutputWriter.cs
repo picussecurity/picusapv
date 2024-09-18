@@ -224,6 +224,8 @@ namespace Sharphound.Runtime
                 }
             }
 
+            _context.Logger.LogError("PARSE_ZIP_FILE:{finalPath}", resolvedFileName);
+
             return resolvedFileName;
         }
     }
